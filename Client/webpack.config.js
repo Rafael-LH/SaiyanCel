@@ -1,5 +1,6 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { dirname } = require('path');
 
 module.exports = () => {
   return {
@@ -11,10 +12,15 @@ module.exports = () => {
       filename: 'bundle.js',
       publicPath: '/'
     },
-    resolve:{
-     extensions: [".js",".jsx"] 
+    resolve: {
+      extensions: [".js", ".jsx"],
+      alias: {
+        '@components': path.resolve(__dirname, './src/components'),
+        '@pages': path.resolve(__dirname, './src/pages'),
+        '@styles': path.resolve(__dirname, './src/assets/styles')
+      }
     },
-    devServer:{
+    devServer: {
       host: '0.0.0.0',
       port: 9000,
       historyApiFallback: true
@@ -35,7 +41,7 @@ module.exports = () => {
 
       ]
     },
-    plugins:[
+    plugins: [
       new HtmlWebpackPlugin({
         filename: 'index.html',
         template: './public/index.html',

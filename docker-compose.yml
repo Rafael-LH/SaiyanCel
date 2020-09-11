@@ -1,18 +1,31 @@
-version: '3'
+version: '3.7'
 
 services:
   db:
     container_name: dbsaiyancel
     image: mariadb:10
     environment:
-      MYSQL_DATABASE: dbsaiyancel
-      MYSQL_USER: root
-      MYSQL_ROOT_PASSWORD: 123
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     ports: 
       - 3306:3306
     volumes: 
       - dbstore:/var/lib/mysql
 
+  server:
+    container_name: server
+    build:
+      context: Server/
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    links:
+      - db  
+    volumes:
+      - ./Server:/usr/src/app
+      - /usr/src/app/node_modules
+      
   client:
     container_name: client
     build: 

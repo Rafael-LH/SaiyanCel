@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "1.0.0",
-  "description": "Client application Saiyanel",
+  "description": "Client application Saiyancel",
   "main": "webpack.config.js",
   "scripts": {
     "start": "webpack-dev-server"
@@ -29,6 +29,7 @@
   "dependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "styled-components": "^5.2.0"
   }
 }
