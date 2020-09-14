@@ -1,27 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Header as HeaderStyled } from './styles'
-
+import { useGetCategories } from '../../hooks/Header/useGetCategories'
 
 const Header = () => {
-  const categories = [
-    {
-      name: 'Mac',
-      id: 1
-    },
-    {
-      name: 'Ipad',
-      id: 2
-    },
-    {
-      name: 'Iphone',
-      id: 3
-    },
-    {
-      name: 'Whatch',
-      id: 4
-    }
-  ]
+  const categories = useGetCategories()
+
   return (
     <HeaderStyled>
       <nav>

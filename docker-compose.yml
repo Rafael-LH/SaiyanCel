@@ -9,7 +9,7 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     ports: 
-      - 3306:3306
+      - "${MYSQL_PORT}:${MYSQL_PORT}"
     volumes: 
       - dbstore:/var/lib/mysql
 
@@ -18,10 +18,15 @@ services:
     build:
       context: Server/
       dockerfile: Dockerfile
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_HOST: db
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     ports:
-      - 3000:3000
+      - "${SERVER_PORT}:${SERVER_PORT}"
     links:
-      - db  
+      - db 
     volumes:
       - ./Server:/usr/src/app
       - /usr/src/app/node_modules
@@ -32,7 +37,7 @@ services:
       context: Client/
       dockerfile: Dockerfile
     ports:
-      - 9000:9000
+      - "${CLIENT_PORT}:${CLIENT_PORT}"
     volumes:
       - ./Client:/usr/src/app
       - /usr/src/app/node_modules
