@@ -1,8 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { dirname } = require('path');
+const webpack = require('webpack')
 
-module.exports = () => {
+module.exports = (env, args) => {
+  console.log(`Mode: ${args.mode}`)
+  console.log(process.env.API)
   return {
     entry: {
       index: path.resolve(__dirname, 'src/index.js')
@@ -17,7 +19,8 @@ module.exports = () => {
       alias: {
         '@components': path.resolve(__dirname, './src/components'),
         '@pages': path.resolve(__dirname, './src/pages'),
-        '@styles': path.resolve(__dirname, './src/assets/styles')
+        '@styles': path.resolve(__dirname, './src/assets/styles'),
+        '@hooks': path.resolve(__dirname, './src/hooks')
       }
     },
     devServer: {
@@ -46,6 +49,9 @@ module.exports = () => {
         filename: 'index.html',
         template: './public/index.html',
       }),
+      new webpack.EnvironmentPlugin({
+        apiRest: args.mode === 'development' && process.env.API
+      })
     ]
   }
 } 

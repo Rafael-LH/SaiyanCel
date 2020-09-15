@@ -1,11 +1,13 @@
 import styled from 'styled-components'
+import { maxWidth } from '@styles/variables'
+import { primaryColor } from '@styles/colors'
 
 const transition = '.4s';
 export const Header = styled.header`
   width: 100%;
-  background: rgba(0,0,0,0.8);
+  background: ${primaryColor};
   nav{
-     max-width: 1090px;
+     max-width: ${maxWidth};
      margin: auto;
      ul{
        display: flex;

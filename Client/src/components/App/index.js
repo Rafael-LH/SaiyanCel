@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import GlobalStyles from '@styles/globalStyles'
 import Layout from '@components/Layout'
 import Home from '@pages/Home'
+import NotFound from '@pages/NotFound'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <GlobalStyles />
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route component={NotFound} />
         </Switch>
       </Layout>
     </Router>

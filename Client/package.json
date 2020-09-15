@@ -4,7 +4,7 @@
   "description": "Client application Saiyancel",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "dev": "webpack-dev-server -d"
   },
   "keywords": [
     "Webpack",
@@ -27,6 +27,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",

@@ -5,9 +5,9 @@ export const useGetCategories = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://127.0.0.1:3000/api/products')
-      console.log(response)
-      const { result } = response
+      const response = await fetch(`${process.env.apiRest}/products`)
+      const data = await response.json()
+      const { result } = data
       setData(result)
     }
     fetchData()
