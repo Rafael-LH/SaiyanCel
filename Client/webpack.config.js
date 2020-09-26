@@ -20,7 +20,8 @@ module.exports = (env, args) => {
         '@components': path.resolve(__dirname, './src/components'),
         '@pages': path.resolve(__dirname, './src/pages'),
         '@styles': path.resolve(__dirname, './src/assets/styles'),
-        '@hooks': path.resolve(__dirname, './src/hooks')
+        '@hooks': path.resolve(__dirname, './src/hooks'),
+        '@images': path.resolve(__dirname, './src/assets/images')
       }
     },
     devServer: {
@@ -40,6 +41,15 @@ module.exports = (env, args) => {
         {
           test: /\.html$/i,
           loader: 'html-loader'
+        },
+
+        {
+          test: /\.(jpg|png|jpeg|gif)$/i,
+          use: [
+            {
+              loader: 'url-loader'
+            }
+          ]
         },
 
       ]
