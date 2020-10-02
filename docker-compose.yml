@@ -2,16 +2,17 @@ version: '3.7'
 
 services:
   db:
-    container_name: dbsaiyancel
-    image: mariadb:10
+    container_name: saiyancel_db
+    image: mongo
     environment:
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: ${DB_HOST}
+      DB_NAME: ${DB_NAME}
     ports: 
-      - "${MYSQL_PORT}:${MYSQL_PORT}"
+      - "${MONGO_PORT}:${MONGO_PORT}"
     volumes: 
-      - dbstore:/var/lib/mysql
+      - dbstore:/data/db
 
   server:
     container_name: server
@@ -19,10 +20,10 @@ services:
       context: Server/
       dockerfile: Dockerfile
     environment:
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_HOST: db
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: ${DB_HOST}
+      DB_NAME: ${DB_NAME}
     ports:
       - "${SERVER_PORT}:${SERVER_PORT}"
     links:

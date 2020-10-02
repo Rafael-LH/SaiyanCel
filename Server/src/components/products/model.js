@@ -1,22 +1,16 @@
-const { query } = require('../../database')
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema;
 
 class Model {
   constructor() {
-    this.Categories = 'Categories'
-    this.query = query
+    this.categories = 'categories'
   }
-
-  getProducts() {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const query = `SELECT * FROM ${this.Categories}`
-        const data = await this.query(query, [])
-        resolve(data)
-      } catch (err) {
-        reject(err)
-      }
+  Categories() {
+    const MySchema = new Schema({
+      name: String
     })
+    const model = mongoose.model(this.categories, MySchema)
+    return model
   }
-
 }
-module.exports = new Model() 
+module.exports = new Model()

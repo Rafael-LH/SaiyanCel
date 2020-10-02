@@ -1,38 +1,18 @@
-const mysql = require('mysql')
-const { host, user, password, database } = require('../config')
+const db = require('mongoose');
+const { db_user, db_password, db_host, db_name } = require('../config')
 
-const connection = mysql.createConnection({
-  host,
-  user,
-  password,
-  database
-})
-function mysqlConnect() {
-  connection.connect((error) => {
-    if (error) {
-      console.log(`Error ${error}`);
-      return false;
-    }
-    console.log('Database connected...');
+//  Nos ayuda para no tener problemas en la coneccion caso de que db_user o db_password contengan caracteres especiales 
+const user = encodeURIComponent(db_user)
+const password = encodeURIComponent(db_password)
+const MONGO_URI = `mongodb+srv://${user}:${password}@${db_host}/${db_name}?retryWrites=true&w=majority`
+
+db.Promise = global.Promise;
+const connect = async () => {
+  await db.connect(MONGO_URI, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true, // para no tener probleman de compatibilidad
   })
+    .then((_) => console.log('DB conected!!'))
+    .catch(err => console.log(`has ocurred and error with connection ${err}`))
 }
-function connectDestroy() {
-  connection.destroy();
-}
-function query(query, params) {
-  return new Promise((resolve, reject) => {
-    connection.query(query, params, (error, results, fields) => {
-      if (error) {
-        reject(error)
-      } else {
-        const converToString = JSON.stringify(results)
-        resolve(JSON.parse(converToString)) // Convert in JSON
-      }
-    })
-  })
-}
-module.exports = {
-  mysqlConnect,
-  connectDestroy,
-  query
-};
+module.exports = connect;

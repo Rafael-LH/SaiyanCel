@@ -7,6 +7,7 @@ import GlobalStyles from '@styles/globalStyles'
 import Layout from '@components/Layout'
 import Home from '@pages/Home'
 import NotFound from '@pages/NotFound'
+// import '../../config/firebase'
 
 const App = () => {
   return (

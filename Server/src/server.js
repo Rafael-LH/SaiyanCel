@@ -14,8 +14,8 @@ const router = require('./network/routes')
 router(app)
 
 // Connected data base
-const { mysqlConnect } = require('./database')
-mysqlConnect();
+const connect = require('./database')
+connect();
 
 app.listen(app.get('port'), () => {
   console.log(`La Aplicacion esta escuchando en http://localhost:${PORT}`)
