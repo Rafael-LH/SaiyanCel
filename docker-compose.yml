@@ -24,13 +24,6 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       DB_HOST: ${DB_HOST}
       DB_NAME: ${DB_NAME}
-      API_KEY: ${API_KEY}
-      AUTH_DOMAIN: ${AUTH_DOMAIN}
-      DATA_BASE_URL: ${DATA_BASE_URL}
-      PROJECT_ID: ${PROJECT_ID}
-      STORAGE_BUCKET: ${STORAGE_BUCKET}
-      MESSAGIND_SENDER_ID: ${MESSAGIND_SENDER_ID}
-      APP_ID: ${APP_ID}
     ports:
       - "${SERVER_PORT}:${SERVER_PORT}"
     links:
@@ -46,6 +39,13 @@ services:
       dockerfile: Dockerfile
     environment:
       API: ${API}
+      API_KEY: ${API_KEY}
+      AUTH_DOMAIN: ${AUTH_DOMAIN}
+      DATA_BASE_URL: ${DATA_BASE_URL}
+      PROJECT_ID: ${PROJECT_ID}
+      STORAGE_BUCKET: ${STORAGE_BUCKET}
+      MESSAGIND_SENDER_ID: ${MESSAGIND_SENDER_ID}
+      APP_ID: ${APP_ID}
     ports:
       - "${CLIENT_PORT}:${CLIENT_PORT}"
     volumes:
