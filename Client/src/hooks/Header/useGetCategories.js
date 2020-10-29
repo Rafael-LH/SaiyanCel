@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import firebase, { storage } from 'firebase';
+import 'firebase/storage';
 import { firebaseConfig } from '../../config/firebase'
 
 export const useGetCategories = () => {
@@ -10,10 +12,11 @@ export const useGetCategories = () => {
       const data = await response.json()
       const { result } = data
       setData(result)
-      firebase.initializeApp(firebaseConfig);
-      var storage = firebase.storage();
-      console.log(storage);
-      // var storage = firebase.app().storage("gs://bucketproducts-ec2a8.appspot.com/products");;
+
+      // firebase.initializeApp(firebaseConfig);
+      // var storageRef = firebase.storage().ref("products/")
+      // storageRef.put(file)
+      // console.log(storage);
     }
     fetchData()
   }, [])
