@@ -1,4 +1,5 @@
 const Model = require('./model')
+const SchemaOffers = require('../../database/schemas/products')
 
 class Store {
   constructor() {
@@ -7,6 +8,9 @@ class Store {
 
   async getCategories() {
     return await this.SchemaCategories.find()
+  }
+  async getOffers() {
+    return await SchemaOffers.find()
   }
 }
 module.exports = new Store()
