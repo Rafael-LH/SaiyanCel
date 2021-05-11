@@ -4,7 +4,7 @@
   "description": "Client application Saiyancel",
   "main": "webpack.config.js",
   "scripts": {
-    "dev": "webpack-dev-server -d"
+    "dev": "NODE_ENV=development webpack-dev-server -d"
   },
   "keywords": [
     "Webpack",

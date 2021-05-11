@@ -13,11 +13,10 @@ router.get('/', async (req, res, next) => {
 })
 router.get('/offer', async (req, res, next) => {
   try {
-    console.log('dasdasdas');
     const data = await Store.getOffers()
     sendResponse({ res, status: 200, message: 'Get offers', result: data })
   } catch (err) {
-    sendResponse({ res, status: 500, message: err, result: {}, error: err })
+    next(err)
   }
 })
 module.exports = router

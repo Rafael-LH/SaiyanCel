@@ -5,8 +5,8 @@ import 'firebase/storage';
 
 const useGetImageFirebase = (image) => {
   const [url, setUrl] = useState()
-
   useEffect(() => {
+    console.log('pathReference');
     const fetchBucket = () => {
       firebase.initializeApp(firebaseConfig);
       const storage = firebase.storage();

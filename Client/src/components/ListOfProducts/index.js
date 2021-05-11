@@ -1,18 +1,27 @@
 import React from 'react'
 import useGetImageFirebase from '@hooks/generals/useGetImageFirebase'
+import { P } from './styles'
 
-const ListOfProducts = ({ data }) => {
-  const { url } = useGetImageFirebase(data.image)
+const ListOfProducts = ({ image, details }) => {
+  const { url } = useGetImageFirebase(image)
   return (
-    <article key={index}>
+    <article>
       <figure>
-        <img src={item} alt="Product" />
+        <img src={url} alt="Product" />
       </figure>
       <b>
-        <h1>Iphone 11 Pro</h1>
+        <h1>{details.name}</h1>
       </b>
-      <p>Antes: $12500</p>
-      <p>Ahora $9000</p>
+      {
+        details.discount
+          ?
+          <>
+            <p>Antes: ${details.price}</p>
+            <p>Ahora: ${details.price - details.discount}</p>
+          </>
+          :
+          <P>Precio ${details.price}</P>
+      }
     </article>
   )
 }

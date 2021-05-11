@@ -10,9 +10,9 @@ const Home = () => {
     <>
       <Banner />
       <Discounts />
-      <AboutUs />
+      {/* <AboutUs />
       <NewProducts />
-      <Games />
+      <Games /> */}
     </>
   )
 }

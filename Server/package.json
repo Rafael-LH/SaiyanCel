@@ -4,7 +4,7 @@
   "description": "Server application Saiyancel",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon src/server.js"
+    "server": "NODE_ENV=development nodemon src/server.js"
   },
   "keywords": [
     "NodeJS",
@@ -13,13 +13,19 @@
   "author": "Rafael Lopez",
   "license": "MIT",
   "dependencies": {
+    "@hapi/boom": "^9.1.2",
+    "@hapi/joi": "^17.1.1",
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "firebase": "^7.23.0",
     "mongoose": "^5.10.7",
     "multer": "^1.4.2",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "passport": "^0.4.1",
+    "passport-http": "^0.3.0",
+    "passport-jwt": "^4.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
