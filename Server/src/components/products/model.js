@@ -1,20 +1,16 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema;
-const products = require('../../database/schemas/products')
+const SchemaOffers = require('../../database/schemas/products')
+const SchemaCategories = require('../../database/schemas/categories')
+
 class Model {
-  constructor() {
-    this.categories = 'categories'
+  constructor() { }
+  async getCategories() {
+    const categories = await SchemaCategories.find()
+    return categories
   }
-  Categories() {
-    const MySchema = new Schema({
-      name: String
-    })
-    const model = mongoose.model(this.categories, MySchema)
-    return model
-  }
-  Products() {
-    const model = products()
-    return model
+  async get({ tags }) {
+    const query = tags ? { tags: { $in: tags } } : {}
+    const products = await SchemaOffers.find(query)
+    return products
   }
 }
 module.exports = new Model()

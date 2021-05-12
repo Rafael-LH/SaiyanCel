@@ -10,7 +10,8 @@ const products = new Schema({
     price: Number,
     discount: Number,
     stock: Number,
-    storage: Number
-  }
+    storage: Number,
+  },
+  tags: Array
 })
 module.exports = mongoose.model('products', products);

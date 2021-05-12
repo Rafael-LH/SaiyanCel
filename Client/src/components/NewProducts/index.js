@@ -1,11 +1,11 @@
 import React from 'react'
 import ListOfProducts from '@components/ListOfProducts'
-import image from '@images/products/new-product.jpeg'
+import useGetProducts from '@hooks/generals/useGetProducts'
 
-const NewProducts = () => (
-  <ListOfProducts
-    title="Lo nuevo que ha llegado a Saiyancel"
-    data={[image, image, image, image, image, image]}
-  />
-)
+const NewProducts = () => {
+  const { products } = useGetProducts({ query: '?tags=new' })
+  return (
+    products.map(item => <ListOfProducts key={item._id} {...item} />)
+  )
+}
 export default NewProducts
