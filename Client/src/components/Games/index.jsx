@@ -1,14 +1,12 @@
 import React from 'react'
-import { Section } from './styles'
-import imageGameNintendo from '@images/nintendo.jpg'
-import imageGamePlayStation from '@images/playstation.jpg'
-import imageGameXbox from '@images/xbox.jpg'
+import { Section, Article, ContainerItems, H4 } from './styles'
+// import imageGamePlayStation from '@images/playstation.jpg'
+// import imageGameXbox from '@images/xbox.jpg'
 import SliderGame from '@components/SliderGame'
+import useGetProducts from '@hooks/generals/useGetProducts'
 
 const Games = () => {
-  const dataNintendo = [imageGameNintendo, imageGameNintendo, imageGameNintendo, imageGameNintendo, imageGameNintendo, imageGameNintendo, imageGameNintendo, imageGameNintendo, imageGameNintendo, imageGameNintendo]
-  const dataPayStation = [imageGamePlayStation, imageGamePlayStation, imageGamePlayStation, imageGamePlayStation, imageGamePlayStation, imageGamePlayStation, imageGamePlayStation, imageGamePlayStation, imageGamePlayStation, imageGamePlayStation]
-  const dataXbox = [imageGameXbox, imageGameXbox, imageGameXbox, imageGameXbox, imageGameXbox, imageGameXbox, imageGameXbox, imageGameXbox, imageGameXbox, imageGameXbox]
+  const { products } = useGetProducts({ query: '?category=game' })
   return (
     <Section>
       <hgroup>
@@ -17,21 +15,24 @@ const Games = () => {
           Los video juegos han llegado ha Saiyancel sigue con toda la diversion con los mejores titulos
         </h3>
       </hgroup>
-      <SliderGame
-        style={{ color: 'red' }}
-        sectionName="Nintendo"
-        data={dataNintendo}
-      />
-      <SliderGame
-        style={{ color: '#0070d1' }}
-        sectionName="PlayStation"
-        data={dataPayStation}
-      />
-      <SliderGame
-        style={{ color: 'green' }}
-        sectionName="Xbox"
-        data={dataXbox}
-      />
+      <Article>
+        <H4 style={{ color: 'red' }}>Nintendo</H4>
+        <ContainerItems>
+          {products.map(item => item.brand === 'nintendo' && <SliderGame key={item._id} image={item.image} {...item} />)}
+        </ContainerItems>
+      </Article>
+      <Article>
+        <H4 style={{ color: '#0070d1' }}>PlayStation</H4>
+        <ContainerItems>
+          {products.map(item => item.brand === 'sony' && <SliderGame key={item._id} image={item.image} {...item} />)}
+        </ContainerItems>
+      </Article>
+      <Article>
+        <H4 style={{ color: 'green' }}> Xbox</H4>
+        <ContainerItems>
+          {products.map(item => item.brand === 'microsoft' && <SliderGame key={item._id} image={item.image} {...item} />)}
+        </ContainerItems>
+      </Article>
     </Section>
   )
 }

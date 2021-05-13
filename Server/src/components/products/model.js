@@ -7,8 +7,21 @@ class Model {
     const categories = await SchemaCategories.find()
     return categories
   }
-  async get({ tags }) {
-    const query = tags ? { tags: { $in: tags } } : {}
+  getQuery(query) {
+    let objQuery = {}
+    const queryKey = Object.keys(query)
+    const queryValues = Object.values(query)
+    queryKey.forEach((item, index) => {
+      if (item === 'tags') {
+        objQuery.tags = { $in: queryValues[index] }
+      } else {
+        objQuery[item] = queryValues[index]
+      }
+    })
+    return objQuery
+  }
+  async get(objQuery) {
+    const query = this.getQuery(objQuery)
     const products = await SchemaOffers.find(query)
     return products
   }

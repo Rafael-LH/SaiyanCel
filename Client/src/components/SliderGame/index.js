@@ -1,27 +1,20 @@
 import React from 'react'
-import { Article, ContainerItems, ContainerInfo, Img, P, H4 } from './styles'
+import { ContainerInfo, Img, P, H1 } from './styles'
+import useGetImageFirebase from '@hooks/generals/useGetImageFirebase'
 
-const SliderGame = ({ style, sectionName, data }) => {
+const SliderGame = ({ image, details }) => {
+  const { url } = useGetImageFirebase(image)
   return (
-    <Article>
-      <H4 style={style}>{sectionName}</H4>
-      <ContainerItems>
-        {
-          data.map((item, index) => (
-            <ContainerInfo key={index}>
-              <figure>
-                <Img src={item} alt="Product" />
-              </figure>
-              <b>
-                <h1>Iphone 11 Pro</h1>
-              </b>
-              <P>Antes: $12500</P>
-              <P>Ahora $9000</P>
-            </ContainerInfo>
-          ))
-        }
-      </ContainerItems>
-    </Article>
+    <ContainerInfo>
+      <figure>
+        <Img src={url} alt={details.name} />
+      </figure>
+      <H1>{details.name}</H1>
+      <>
+        {details.discount ? <P>Antes: $12500</P> : <P></P>}
+        <P>{details.discount ? 'Ahora' : 'Precio'} ${details.price}</P>
+      </>
+    </ContainerInfo>
   )
 }
 export default SliderGame
