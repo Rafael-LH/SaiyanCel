@@ -12,7 +12,7 @@ const Header = () => {
           {
             categories.map((item, index) => (
               <li key={index}>
-                <Link to={`/category/${item.id}`}> {item.name} </Link>
+                <Link to={`/type/${item.type}`}> {item.name} </Link>
               </li>
             ))
           }
