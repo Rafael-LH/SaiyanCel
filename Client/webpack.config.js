@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack')
 
@@ -19,7 +20,7 @@ module.exports = (env, args) => {
       alias: {
         '@components': path.resolve(__dirname, './src/components'),
         '@pages': path.resolve(__dirname, './src/pages'),
-        '@styles': path.resolve(__dirname, './src/assets/styles'),
+        '@styles': path.resolve(__dirname, './src/assets/sass'),
         '@hooks': path.resolve(__dirname, './src/hooks'),
         '@images': path.resolve(__dirname, './src/assets/images'),
         '@config': path.resolve(__dirname, './src/config')
@@ -43,7 +44,12 @@ module.exports = (env, args) => {
           test: /\.html$/i,
           loader: 'html-loader'
         },
-
+        {
+          test: /\.scss$/,
+          use: [
+            MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
+          ]
+        },
         {
           test: /\.(jpg|png|jpeg|gif)$/i,
           use: [
@@ -69,6 +75,9 @@ module.exports = (env, args) => {
         storageBucket: process.env.STORAGE_BUCKET,
         messagingSenderId: process.env.MESSAGIND_SENDER_ID,
         appId: process.env.APP_ID,
+      }),
+      new MiniCssExtractPlugin({
+        filename: 'css/[name].css'
       })
     ]
   }

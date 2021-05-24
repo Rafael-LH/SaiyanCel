@@ -1,7 +1,7 @@
 import React from 'react'
 import ListOfProducts from '@components/ListOfProducts'
 import useGetProducts from '@hooks/generals/useGetProducts'
-import { Section, Title } from '@styles/layout'
+// import { Section, Title } from '@styles/layout'
 
 const ProductList = ({ match: { params: { type } } }) => {
   const { products } = useGetProducts({ query: `?type=${type}` })

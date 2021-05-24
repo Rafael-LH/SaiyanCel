@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 // import firebase, { storage } from 'firebase';
 // import 'firebase/storage';
 // import { firebaseConfig } from '../../config/firebase'

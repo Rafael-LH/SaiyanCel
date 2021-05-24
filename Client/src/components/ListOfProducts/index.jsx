@@ -1,12 +1,12 @@
 import React from 'react'
 import useGetImageFirebase from '@hooks/generals/useGetImageFirebase'
-import { P } from './styles'
+import './styles.scss'
 
 const ListOfProducts = ({ image, details }) => {
   const { url } = useGetImageFirebase(image)
   return (
-    <article>
-      <figure>
+    <article className="grid-12 grid-md-6 grid-lg-3 text-align--center">
+      <figure className="product-image">
         <img src={url} alt="Product" />
       </figure>
       <b>
@@ -16,11 +16,11 @@ const ListOfProducts = ({ image, details }) => {
         details.discount
           ?
           <>
-            <p>Antes: ${details.price}</p>
+            <p className="before-price">Antes: ${details.price}</p>
             <p>Ahora: ${details.price - details.discount}</p>
           </>
           :
-          <P>Precio ${details.price}</P>
+          <p className="price">Precio ${details.price}</p>
       }
     </article>
   )

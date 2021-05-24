@@ -1,14 +1,13 @@
-import styled from 'styled-components'
-import { maxWidth } from '@styles/variables'
+@import '../../assets/sass/lib/variables';
 
-export const Container = styled.div`
-  max-width: ${maxWidth};
+.container-about-us{
+  max-width: $maxWidth;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: auto;
-  section{
+  article{
     p{
       font-size: 1.2em;
       text-align: center;
@@ -18,4 +17,4 @@ export const Container = styled.div`
       width: 100%;
     }
   }
-`
+}

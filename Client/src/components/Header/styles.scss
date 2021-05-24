@@ -1,0 +1,29 @@
+@import '../../assets/sass/lib/variables';
+$transition: '.4s';
+
+.header-container{
+  width: 100%;
+  background: $primary-color;
+  nav{
+    max-width: 1090px;
+    margin: auto;
+    ul{
+      display: flex;
+      justify-content: center;
+      li{
+        padding: 10px 20px;
+        a{
+          display: block;
+          color: #dcd6d6;
+          font-size: .9em;
+          transition: ease $transition;
+          letter-spacing: 1px;
+          &:hover{
+            transition: ease $transition;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}

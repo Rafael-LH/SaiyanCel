@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Header as HeaderStyled } from './styles'
 import { useGetCategories } from '@hooks/header/useGetCategories'
+import "./styles.scss"
 
 const Header = () => {
   const categories = useGetCategories()
   return (
-    <HeaderStyled>
+    <header className="header-container">
       <nav>
         <ul>
           {
@@ -18,7 +18,7 @@ const Header = () => {
           }
         </ul>
       </nav>
-    </HeaderStyled>
+    </header>
   )
 }
 export default Header 

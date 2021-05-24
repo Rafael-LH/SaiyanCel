@@ -1,13 +1,13 @@
 import React from 'react'
-import { Container } from './styles'
 import useGetImageFirebase from '@hooks/generals/useGetImageFirebase'
 import app from '@config/app'
+import './styles.scss'
 
 const AboutUs = () => {
   const { url } = useGetImageFirebase(app.imgBackGroundAboutUs)
   return (
-    <Container>
-      <section>
+    <section className="container-about-us">
+      <article>
         <div>
           <p>
             <b>Saiyancel</b> trae para ti los mejores productos <b>apple</b> a un super precio contamos con
@@ -19,8 +19,8 @@ const AboutUs = () => {
         <figure>
           <img src={url} alt="Image" />
         </figure>
-      </section>
-    </Container>
+      </article>
+    </section>
   )
 }
 export default AboutUs

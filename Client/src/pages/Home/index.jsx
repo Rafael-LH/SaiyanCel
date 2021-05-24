@@ -2,8 +2,8 @@ import React from 'react'
 import Banner from '@components/Banner'
 import Discounts from '@components/Discounts'
 import AboutUs from '@components/AboutUs'
-import NewProducts from '@components/NewProducts'
-import Games from '@components/Games'
+// import NewProducts from '@components/NewProducts'
+// import Games from '@components/Games'
 
 const Home = () => {
   return (
@@ -12,7 +12,7 @@ const Home = () => {
       <Discounts />
       <AboutUs />
       {/* <NewProducts /> */}
-      <Games />
+      {/* <Games /> */}
     </>
   )
 }

@@ -1,0 +1,106 @@
+// Margin
+@for $i from 1 through 5 {
+  .mt-#{$i} {
+    margin-top: #{$i}em;
+  }
+  .mr-#{$i} {
+    margin-right: #{$i}em;
+  }
+  .mb-#{$i} {
+    margin-bottom: #{$i}em;
+  }
+  .ml-#{$i} {
+    margin-right: #{$i}em;
+  }
+  .mx-#{$i} {
+    margin: 0em #{$i}em 0em;
+  }
+  .my-#{$i} {
+    margin: #{$i}em 0em #{$i}em;
+  }
+}
+// Padding
+@for $i from 1 through 5 {
+  .pt-#{$i} {
+    padding-top: #{$i}em;
+  }
+  .pr-#{$i} {
+    padding-right: #{$i}em;
+  }
+  .pb-#{$i} {
+    padding-bottom: #{$i}em;
+  }
+  .pl-#{$i} {
+    padding-left: #{$i}em;
+  }
+  .px-#{$i} {
+    padding: 0em #{$i}em 0em;
+  }
+  .py-#{$i} {
+    padding: #{$i}em 0em #{$i}em;
+  }
+}
+// Text
+.text-align {
+  &--center{
+    text-align: center;
+  }
+}
+
+.title{
+  font-size: 1.5em;
+}
+@include respond-to($xs){
+} 
+@include respond-to($md){
+  .title--md{
+    font-size: 2em;
+  }
+}
+@include respond-to($lg){
+  .title--lg{
+    font-size: 2.5em;
+  }
+}
+@include respond-to($xl){
+  .title--xl{
+    font-size: 3em;
+  }
+}
+// import styled from 'styled-components'
+// import { maxWidth, maxSizeH1 } from '@styles/variables'
+
+// export const Section = styled.section`
+//   margin: auto;
+//   display: flex;
+//   justify-content: space-between;
+//   flex-wrap: wrap;
+//   article{
+//     display: flex;
+//     justify-content: center;
+//     flex-wrap: wrap;
+//     width: 30%;
+//     margin-bottom: 50px;
+//     figure{
+//       text-align: center;
+//       img{
+//         width: 80%;
+//       }
+//     }
+//     p{
+//       width: 100%;
+//       text-align: center;
+//       margin: 0px 0px 5px;
+//       &:nth-child(odd) {
+//         color: #929292;
+//         text-decoration-line: line-through;
+//       }
+//     }
+//   }
+// `
+// export const Title = styled.h1`
+//   width: 100%;
+//   text-align: center;
+//   font-size: ${maxSizeH1};
+//   margin-bottom: 80px;
+// `
