@@ -1,4 +1,12 @@
 .layoutMaxWidth{
   max-width: $maxWidth;
   margin: auto;
+  padding: 0px 15px;
+}
+.price-before{
+  color: #929292;
+  text-decoration-line: line-through;
+}
+.w100{
+  width: 100%;
 }

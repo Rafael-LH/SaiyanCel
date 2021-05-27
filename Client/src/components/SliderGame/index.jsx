@@ -1,20 +1,21 @@
 import React from 'react'
-import { ContainerInfo, Img, P, H1 } from './styles'
+// import { ContainerInfo, Img, P, H1 } from './styles'
 import useGetImageFirebase from '@hooks/generals/useGetImageFirebase'
+import './styles.scss'
 
 const SliderGame = ({ image, details }) => {
   const { url } = useGetImageFirebase(image)
   return (
-    <ContainerInfo>
+    <div className="container-info flex flex-wrap justify-content--center">
       <figure>
-        <Img src={url} alt={details.name} />
+        <img className="container-info__img" src={url} alt={details.name} />
       </figure>
-      <H1>{details.name}</H1>
+      <p className="text-align--center w100 my-1"><b>{details.name}</b></p>
       <>
-        {details.discount ? <P>Antes: $12500</P> : <P></P>}
-        <P>{details.discount ? 'Ahora' : 'Precio'} ${details.price}</P>
+        {details.discount ? <p className="price-before">Antes: $12500</p> : ''}
+        <p>{details.discount ? 'Ahora' : 'Precio'} ${details.price}</p>
       </>
-    </ContainerInfo>
+    </div>
   )
 }
 export default SliderGame

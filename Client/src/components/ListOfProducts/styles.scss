@@ -1,7 +1,6 @@
-.product-image{
-  text-align: center;
-  img{
-    width: 80%;
+.container-product{
+  &__image{
+    max-width: 280px;
   }
 }
 .price {

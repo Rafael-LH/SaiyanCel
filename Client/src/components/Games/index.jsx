@@ -1,39 +1,40 @@
 import React from 'react'
-import { Section, Article, ContainerItems, H4 } from './styles'
-// import imageGamePlayStation from '@images/playstation.jpg'
-// import imageGameXbox from '@images/xbox.jpg'
+import './styles.scss'
+
 import SliderGame from '@components/SliderGame'
 import useGetProducts from '@hooks/generals/useGetProducts'
 
 const Games = () => {
   const { products } = useGetProducts({ query: '?category=game' })
   return (
-    <Section>
+    <section className="layoutMaxWidth container-games">
       <hgroup>
-        <h1>Videojuegos</h1>
-        <h3>
-          Los video juegos han llegado ha Saiyancel sigue con toda la diversion con los mejores titulos
-        </h3>
+        <h1 className="title title--md">Videojuegos</h1>
+        <p className="text-align--center">
+          <b>
+            Los video juegos han llegado ha Saiyancel sigue con toda la diversion con los mejores titulos
+          </b>
+        </p>
       </hgroup>
-      <Article>
-        <H4 style={{ color: 'red' }}>Nintendo</H4>
-        <ContainerItems>
+      <article>
+        <h4 className="mb-2" style={{ color: 'red' }}>Nintendo</h4>
+        <div className="container-games__items flex">
           {products.map(item => item.brand === 'nintendo' && <SliderGame key={item._id} image={item.image} {...item} />)}
-        </ContainerItems>
-      </Article>
-      <Article>
-        <H4 style={{ color: '#0070d1' }}>PlayStation</H4>
-        <ContainerItems>
+        </div>
+      </article>
+      <article>
+        <h4 className="mb-2" style={{ color: '#0070d1' }}>PlayStation</h4>
+        <div className="container-games__items flex">
           {products.map(item => item.brand === 'sony' && <SliderGame key={item._id} image={item.image} {...item} />)}
-        </ContainerItems>
-      </Article>
-      <Article>
-        <H4 style={{ color: 'green' }}> Xbox</H4>
-        <ContainerItems>
+        </div>
+      </article>
+      <article>
+        <h4 className="mb-2" style={{ color: 'green' }}> Xbox</h4>
+        <div className="container-games__items flex">
           {products.map(item => item.brand === 'microsoft' && <SliderGame key={item._id} image={item.image} {...item} />)}
-        </ContainerItems>
-      </Article>
-    </Section>
+        </div>
+      </article>
+    </section>
   )
 }
 export default Games

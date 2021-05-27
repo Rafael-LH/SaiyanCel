@@ -6,7 +6,7 @@ import './styles.scss'
 const AboutUs = () => {
   const { url } = useGetImageFirebase(app.imgBackGroundAboutUs)
   return (
-    <section className="container-about-us">
+    <section className="layoutMaxWidth container-about-us">
       <article>
         <div>
           <p>
